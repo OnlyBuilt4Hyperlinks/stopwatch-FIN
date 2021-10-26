@@ -5,11 +5,13 @@ var hours = 0;
 
 //in order to user clear interval we need to pass an object as an arg. 
 //object has to represent the start of the countdown
-var startTimer = setInterval(stopwatchStart,1000)
 
+var startTimer;
 
-//because i had trouble, i'm wondering if there is a reason i may need to creat an expression out of the function
-//does me having return make a difference in function operation
+function runTimer() {
+startTimer = setInterval(stopwatchStart,1000)
+}
+
 function stopwatchStart(){
    addSeconds();
 }
@@ -24,13 +26,10 @@ function stopwatchReset(){
     minutes = 0; 
     hours = 0; 
 
-    document.getElementById("secondsDOM").innerHTML = seconds;
-    document.getElementById("minutesDOM").innerHTML = minutes;
-    document.getElementById("hoursDOM").innerHTML = hours; 
-    }
-
+    document.getElementById("secondsDOM").innerHTML = ":" + seconds;
+    document.getElementById("minutesDOM").innerHTML = ":" + minutes;
+    document.getElementById("hoursDOM").innerHTML = ":" + hours; 
 }
-
 
 function addSeconds() {
     if (seconds <= 59){
@@ -38,12 +37,14 @@ function addSeconds() {
             hours++;
             seconds = 0;
             minutes = 0;
-        } elseif (seconds >= 59 && minutes < 59){
+        } else if (seconds >= 59 && minutes < 59){
             minutes++;
             seconds = 0;
+        } else {
+            seconds ++;
         }
-        document.getElementById("secondsDOM").innerHTML = seconds;
-        document.getElementById("minutesDOM").innerHTML = minutes;
-        document.getElementById("hoursDOM").innerHTML = hours; 
+        document.getElementById("secondsDOM").innerHTML = ":" + seconds;
+        document.getElementById("minutesDOM").innerHTML = ":" + minutes;
+        document.getElementById("hoursDOM").innerHTML = ":" + hours; 
     }
-}
+} 
