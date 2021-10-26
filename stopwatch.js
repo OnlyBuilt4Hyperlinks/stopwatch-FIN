@@ -1,66 +1,49 @@
-var milliseconds = 0;
+
 var seconds= 0;
 var minutes= 0;
 var hours = 0; 
 
+//in order to user clear interval we need to pass an object as an arg. 
+//object has to represent the start of the countdown
+var startTimer = setInterval(stopwatchStart,1000)
 
-function stopwatchReset() {
+
+//because i had trouble, i'm wondering if there is a reason i may need to creat an expression out of the function
+//does me having return make a difference in function operation
+function stopwatchStart(){
+    setInterval(stopwatchStart,1000);
+}
+
+function stopwatchStop(){
+clearInterval(startTimer);
+}
+
+function stopwatchReset(){
     stopwatchStop();
-    milliseconds = 0;
-    seconds = 0; 
-    minutes = 0;
-    hours   = 0;
-    return;
-}
+    seconds = 0;
+    minutes = 0; 
+    hours = 0; 
 
-function stopwatchStop() {
-    clearInterval(stopwatchStart);
-}
-
-function stopwatchStart() {
-    addMilliSeconds();    
-    return;
-}
-
-
-function addMilliSeconds() {
-    if (milliseconds < 1) {
-        milliseconds ++;
-    } else {
-        addSeconds();
-        milliseconds = 0;
-    }
-    document.getElementById("millisecondsDOM").innerHTML = (":" +milliseconds);
-}
-    
-function addSeconds() {
-    if (seconds < 60) {
-        seconds ++; 
-    } else {
-        addMinutes();
-        seconds = 0; 
-    }
-    document.getElementById("secondsDOM").innerHTML = (":" +seconds);
-}
-
-function addMinutes() {
-    if (minutes < 59) {
-        minutes ++; 
-    } else {
-        
-        addHours(); 
-        minutes = 0;
-        //dont forget to stop this if the bigger unit of time (seconds, minutes,etc) is full
-    }
-    document.getElementById("minutesDOM").innerHTML = (":" +minutes);
-} 
-
-function addHours() {
-    if (hours < 99) {
-        hours ++; 
-    }
-     {
-        
-    }
+    document.getElementById("secondsDOM").innerHTML = seconds;
+    document.getElementById("minutesDOM").innerHTML = minutes;
     document.getElementById("hoursDOM").innerHTML = hours; 
-} 
+    }
+
+}
+
+
+function addSeconds() {
+    if (seconds <= 59){
+        if (seconds && minutes == 59 ){
+            hours++;
+            seconds = 0;
+            minutes = 0;
+        } elseif (seconds >= 59 && minutes < 59){
+            minutes++;
+            seconds = 0;
+        }
+        document.getElementById("secondsDOM").innerHTML = seconds;
+        document.getElementById("minutesDOM").innerHTML = minutes;
+        document.getElementById("hoursDOM").innerHTML = hours; 
+    }
+}
