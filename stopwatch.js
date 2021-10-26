@@ -11,7 +11,7 @@ var startTimer = setInterval(stopwatchStart,1000)
 //because i had trouble, i'm wondering if there is a reason i may need to creat an expression out of the function
 //does me having return make a difference in function operation
 function stopwatchStart(){
-    setInterval(stopwatchStart,1000);
+   addSeconds();
 }
 
 function stopwatchStop(){
