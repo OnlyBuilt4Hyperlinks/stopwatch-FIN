@@ -1,0 +1,42 @@
+Small window with text displaying page header 
+Another section with time  in seconds, mnuutes, hours
+The time will update the seconds, minutes, and hours on a cadence of 1 second.
+
+Seconds 
+Add 1 second unless seconds is 59
+If seconds is 59  and minutes is 59, add 1 hour
+If seconds is 59 and minutes is less than 59 , increment minutes, set seconds to zero
+Update html content after either 
+
+Minutes 
+Add 1 minute unless minutes is 59
+If minutes is 59 and hours is 23, stop the program
+If minutes is less than 59 add 1 minutes
+
+hours 
+Increment hours by 1
+
+Stop button 
+Should stop the program execution
+
+Start button 
+Should start the program execution
+Intend to run with setinterval, 
+
+Reset button 
+Should stop the program execution 
+reset the values of the variables
+Update the htm with the (now) current values 
+
+
+
+
+
+
+
+
+
+questions,Links i read, what i confirmed, 
+Am i using the functions correctly when i try to stop them
+Im using setInterval() as a value to a variable, then passing that to clearInterval()
+Per this, i was using this correctly, the onlything different is setting that value to null 
